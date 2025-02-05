@@ -9,3 +9,16 @@
  *
  * https://refactoring.guru/es/design-patterns/singleton
  */
+
+import { configManager } from "./singleton/config-manager.ts";
+
+configManager.setConfig('url', 'http://localhost:4200/');
+configManager.setConfig('user', 'Mario');
+configManager.setConfig('apiKey', 'abc');
+
+console.log(configManager.getConfig('user'));
+console.log(configManager.getConfig('password'));
+
+for (const key in configManager.getAllConfig()) {
+    console.log(`${ key }: ${ configManager.getConfig(key) }`);
+}
