@@ -31,9 +31,17 @@ function formatDate(date: Date): string {
 type LogLevel = 'info' | 'warn' | 'error';
 
 function createLogger(level: LogLevel) {
-  // Retorna una función que recibe el "message" como argumento
-  // Completar: implementar el logger con formato y color para cada nivel
-  throw new Error('Not implemented');
+  const logger = {
+    info: { label: 'INFO', color: COLORS.blue },
+    warn: { label: 'WARNING', color: COLORS.yellow },
+    error: { label: 'ERROR', color: COLORS.red },
+  };
+
+  return (message: string) => {
+    const values = logger[level];
+
+    return console.log(`%c[${ values.label }:${ formatDate(new Date()) }] ${ message }`, values.color);
+  };
 }
 
 // Ejemplo de uso

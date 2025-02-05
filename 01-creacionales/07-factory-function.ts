@@ -7,3 +7,26 @@
  * * es decir, en tiempo de ejecución y no en tiempo de compilación.
  *
  */
+type Language = 'es' | 'en' | 'fr';
+
+function createGreeter(language: Language) {
+    return function(name: string) {
+        const messages = {
+            es: `Hola ${ name }`,
+            en: `Hello ${ name }`,
+            fr: `Bonjour ${ name }`,
+        };
+
+        return console.log(messages[language]);
+    }
+}
+
+function main(): void {
+    const spanishGreeter = createGreeter('es');
+    const englishGreeter = createGreeter('en');
+
+    spanishGreeter('Mario');
+    englishGreeter('Alberto');
+}
+
+main();
